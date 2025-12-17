@@ -5,7 +5,7 @@
 
 # --- Ignorar carpetas de datos  ---
 data_repo/
-Data/
+Data/*
 
 # --- Ignorar Entorno Virtual  ---
 venv/
@@ -17,3 +17,8 @@ __pycache__/
 *.pyc
 .DS_Store
 .vscode/
+
+# --- La Excepción (AGREGAR) ---
+# Incluir la carpeta de validación y sus archivos npz
+!Data/Validation/
+!Data/Validation/**/*.npz
