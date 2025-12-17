@@ -6,7 +6,7 @@ Utilizamos una arquitectura Transformes de ML para resolver el problema de optim
 
 Antes de comenzar, asegúrate de tener instalado:
 * **Python 3.8 o superior**
-* **Git** (para clonar el repositorio)
+* **Git** (para clonar el repositorio y versionado)
 
 ## ⚙️ Instalación y Configuración
 
