@@ -1,2 +1,19 @@
-data_repo/MEDIUM/tsp_medium_part_10.npz
+# --- Ignorar archivos de datos pesados  ---
 *.npz
+*.pt
+*.pth
+
+# --- Ignorar carpetas de datos  ---
+data_repo/
+Data/
+
+# --- Ignorar Entorno Virtual  ---
+venv/
+env/
+.env
+
+# --- Archivos de Python y Sistema ---
+__pycache__/
+*.pyc
+.DS_Store
+.vscode/
