@@ -39,7 +39,7 @@ Para activar tu entorno en Windows usa:
 ```
 
 ### 4. Instalar dependencias
-Ya activado el entorno, instala todas las librerias necesarias especificadas e el requirements.txt:
+Ya activado el entorno, instala todas las librerias necesarias especificadas en el requirements.txt:
 
 ```
 pip install -r requirements.txt
