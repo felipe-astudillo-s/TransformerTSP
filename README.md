@@ -1,6 +1,6 @@
 # Transformers para resolver el problema TSP
 
-Breve descripción de lo que hace este proyecto (ej. Clasificación de imágenes, predicción de precios, etc.).
+Utilizamos una arquitectura Transformes de ML para resolver el problema de optimizacion TSP (*Travelling Salesman Problem*)
 
 ## 📋 Requisitos Previos
 
