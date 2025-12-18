@@ -45,3 +45,4 @@ Ya activado el entorno, instala todas las librerias necesarias especificadas en 
 pip install -r requirements.txt
 ```
 
+Hola este es un lol
