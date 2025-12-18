@@ -1,6 +1,6 @@
 # Transformers para resolver el problema TSP
 
-Utilizamos una arquitectura Transformes de ML para resolver el problema de optimizacion TSP (*Travelling Salesman Problem*)
+Utilizamos una arquitectura Transformers de ML para resolver el problema de optimizacion TSP (*Travelling Salesman Problem*)
 
 ## 📋 Requisitos Previos
 
