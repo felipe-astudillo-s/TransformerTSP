@@ -17,8 +17,9 @@ class ModelSolver():
         while not state.is_finished():
             # Datos
             x_src = torch.tensor(np.array([state.instance.city_locations]), dtype=torch.float32)
+            x_src = x_src.to(torch.device('cuda'))
             visited = np.pad(np.array(state.tour), (0, instance.num_cities - len(state.tour)), 'constant', constant_values=-1)
-            visited = torch.tensor(np.array([visited]), dtype=torch.int32)
+            visited = torch.tensor(np.array([visited]), dtype=torch.int32).to(torch.device('cuda'))
 
             # Predecir la siguiente ciudad
             output = self.model.forward(x_src, visited)
