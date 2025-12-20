@@ -62,7 +62,8 @@ def train(model: nn.Module, dataset, epochs, train_size, test_size, batch_size, 
     test_loader = DataLoader(test_set, batch_size=batch_size, shuffle=False, num_workers=8)
 
     # Función de pérdida y optimizador
-    loss_function = torch.nn.CrossEntropyLoss()
+    loss_function = torch.nn.CrossEntropyLoss(label_smoothing=0.1) #el label something lo que hace es no castigar tanto los errores que no son "errores", como 2 ciudades que estan
+    #cercanas entre si, en vez de castigar igual un error de 2 ciudades cercanas que un error de 2 ciudades lejanas.
     optimizer = torch.optim.AdamW(model.parameters(), lr=learning_rate, weight_decay=1e-4)
 
     # Métricas
