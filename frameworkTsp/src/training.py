@@ -118,6 +118,29 @@ def train(model: nn.Module, dataset, epochs, train_size, test_size, batch_size, 
             best_model_wts = copy.deepcopy(model.state_dict())
 
     # Cargar los mejores pesos del modelo
+
+    # 1. Crear el diccionario del checkpoint
+        checkpoint = {
+            'epoch': epoch + 1,
+            'model_state_dict': model.state_dict(),
+            'optimizer_state_dict': optimizer.state_dict(), # Guardamos el optimizador!
+            'loss': test_metrics.loss_history[-1],
+            'best_acc': best_acc
+        }
+
+        # 2. Guardar checkpoint "LAST" (se sobrescribe siempre para poder reanudar)
+        torch.save(checkpoint, os.path.join(model_folder_path, 'checkpoint_last.pth'))
+
+        # 3. Guardar checkpoint "BEST" (solo si mejora)
+        if test_metrics.acc_history[-1] > best_acc:
+            best_acc = test_metrics.acc_history[-1]
+            best_model_wts = copy.deepcopy(model.state_dict())
+            
+            # Guardamos también en disco el mejor modelo inmediatamente
+            torch.save(checkpoint, os.path.join(model_folder_path, 'checkpoint_best.pth'))
+            print(f"--> Nuevo mejor modelo guardado (Acc: {best_acc:.2f}%)")
+
+    # Cargar los mejores pesos al final
     model.load_state_dict(best_model_wts)
     return model
         
@@ -128,3 +151,21 @@ def save_model(model, filename):
 def load_model(model: nn.Module, filename):
     model.load_state_dict(torch.load(model_folder_path + filename, weights_only=True), strict=False)
     return model
+
+def resume_training(model, optimizer, filename='checkpoint_last.pth'):
+    path = os.path.join(model_folder_path, filename)
+    if os.path.isfile(path):
+        print(f"Cargando checkpoint '{path}'...")
+        checkpoint = torch.load(path)
+        
+        # Cargar estados
+        model.load_state_dict(checkpoint['model_state_dict'])
+        optimizer.load_state_dict(checkpoint['optimizer_state_dict'])
+        start_epoch = checkpoint['epoch']
+        best_acc = checkpoint.get('best_acc', 0.0)
+        
+        print(f"Cargado. Reanudando desde época {start_epoch}")
+        return start_epoch, best_acc
+    else:
+        print("No se encontró checkpoint.")
+        return 0, 0.0
