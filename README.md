@@ -51,3 +51,12 @@ Si deseas desactivar tu entorno virtual una vez terminado de trabajar, en la ter
 ```
 deactivate
 ```
+
+### Como conectarlo con tu CUDA?
+
+Al inicializar con tu Kernel es posible que no se conecte la GPU. Para ello hay que desintalar y volver a instalar una version de PyTorch:
+
+```
+pip uninstall torch torchvision torchaudio
+pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
+```
