@@ -45,3 +45,9 @@ Ya activado el entorno, instala todas las librerias necesarias especificadas en 
 pip install -r requirements.txt
 ```
 
+### (Opcional) Desinstalar dependencias
+Si deseas desactivar tu entorno virtual una vez terminado de trabajar, en la terminal de tu editor o Power Shell:
+
+```
+deactivate
+```
